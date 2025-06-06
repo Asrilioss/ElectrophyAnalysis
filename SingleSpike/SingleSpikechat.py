@@ -229,8 +229,27 @@ def process_abf_file(filepath, error_logger, group_df):
         error_logger.error(f"Critical error for file {filename}: {str(e)}\n{traceback.format_exc()}")
         return None, []
 
-def process_all_files(data_dir, error_logger, group_df, group_list):
-    """Process all ABF files in a directory with error resilience."""
+def process_all_files(data_dir, error_logger, group_df, group_list=None):
+    """Process all ABF files in a directory with error resilience.
+
+    Parameters
+    ----------
+    data_dir : str
+        Directory containing ABF files.
+    error_logger : logging.Logger
+        Logger for error messages.
+    group_df : pandas.DataFrame
+        DataFrame describing groups (from ``group_mapping.csv``).
+    group_list : list[str], optional
+        Explicit list of groups. If ``None`` the list is built from
+        ``group_df`` and the special ``"Other"`` group is added. This
+        keeps backward compatibility with older scripts/tests that
+        called the function with only three arguments.
+    """
+
+    if group_list is None:
+        group_list = sorted(group_df["group"].unique().tolist()) + ["Other"]
+
     grouped_results = {g: [] for g in group_list}
     all_files = [f for f in os.listdir(data_dir) if f.endswith(".abf")]
     if len(all_files) == 0:
