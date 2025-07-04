@@ -56,16 +56,20 @@ def extract_sweeps_from_abf(file_path, file_name, stim_start_time, stim_end_time
                 abf.sweepC[int(500 * abf.dataPointsPerMs):int(1000 * abf.dataPointsPerMs)]
             )
             
+            # Crée le dict avec les features efel demandées (remplit 0/None si absent)
             sweep_dict = {
                 'File_name': file_name,
                 'Sweep': sweep,
                 'Current_step': current_mean,
-                'Spikecount': feature_values.get('Spikecount', [None])[0] if feature_values.get('Spikecount') else 0,
-                'adaptation': None,
-                'Latency_ms': feature_values.get('time_to_first_spike', [None])[0] if feature_values.get('time_to_first_spike') else None,
-                'ISI_CV': None,
-                'ISI_mean_ms': None
             }
+            for feat in features_efel:
+                val = feature_values.get(feat)
+                # Pour les features qui retournent une liste (souvent le cas), on prend le 1er élément s’il existe, sinon None
+                if isinstance(val, list):
+                    sweep_dict[feat] = val[0] if val and val[0] is not None else None
+                else:
+                    sweep_dict[feat] = val if val is not None else None
+
             spikecount = sweep_dict['Spikecount']
             if spikecount is not None and spikecount > 4:
                 adaptation_index = feature_values.get('adaptation_index')
@@ -197,10 +201,10 @@ def generate_summary_report(final_data, abf_files, error_list, output_dir):
 # --------------------------- MAIN ---------------------------
 if __name__ == "__main__":
     # ======= PARAMÈTRES À MODIFIER DIRECTEMENT ICI =======
-    folder_path = r"F:/Electrophy/Data culture/Data culture 4 PicroCP +G/Current Clamp Depol 500ms"
+    folder_path = r"F:\Electrophy\Data culture\Data culture 4 PicroCP +G\testrename"
     export_name = "Depol500_CC"
-    stim_start_time = 499
-    stim_end_time = 1040
+    stim_start_time = 200
+    stim_end_time = 1000
     features_efel = ['Spikecount', 'adaptation_index', 'time_to_first_spike', 'ISI_CV', 'ISI_values']
     retry_errors = False  # True si tu veux relancer uniquement sur les erreurs
     # =====================================================
