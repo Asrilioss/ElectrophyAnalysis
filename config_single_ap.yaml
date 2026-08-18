@@ -1,0 +1,13 @@
+# single_ap.py — example configuration
+#
+#   python single_ap.py -c examples/config_single_ap.yaml
+#
+# Command-line flags override anything set here. The SHA-256 of this file and
+# of the mapping CSV are both written to the Metadata sheet of the output
+# workbook, so a published result can be tied back to the exact inputs.
+
+input: ./data/single_ap              # folder containing the .abf files
+output: SpikeFeatureResults.xlsx     # written inside the timestamped results folder
+mapping: examples/group_mapping.csv  # file-number ranges -> experimental groups
+overwrite: false                     # false = append a timestamp instead of clobbering
+script_copy: true                    # copy the script next to the results, for provenance

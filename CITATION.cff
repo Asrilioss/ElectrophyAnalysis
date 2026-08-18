@@ -1,0 +1,62 @@
+cff-version: 1.2.0
+title: >-
+  ElectrophyAnalysis: automated, reproducible analysis of whole-cell
+  current-clamp recordings
+message: >-
+  If you use this software, please cite both the software release and the
+  accompanying paper.
+type: software
+authors:
+  - given-names: Elias
+    family-names: Kanaïe-Atrian
+    email: elias.kanaie-atrian@inserm.fr
+    affiliation: INSERM, Neurocentre Magendie, U1215, Bordeaux, France
+    # orcid: 'https://orcid.org/0000-0000-0000-0000'   # TODO: add your ORCID
+  - given-names: Santiago
+    family-names: Rivera
+    affiliation: >-
+      Aix-Marseille Université, CNRS, INP, Institut Neurophysiopathologie,
+      Marseille, France
+  - given-names: Eric
+    family-names: Di Pasquale
+    affiliation: >-
+      Aix-Marseille Université, CNRS, INP, Institut Neurophysiopathologie,
+      Marseille, France
+repository-code: 'https://github.com/Asrilioss/ElectrophyAnalysis'
+abstract: >-
+  A suite of three command-line pipelines and a graphical application that
+  automate the analysis of whole-cell current-clamp recordings: extraction of
+  Petilla-compliant intrinsic properties from 500 ms repetitive-firing
+  protocols, kinetic characterization of single action potentials, and
+  detection and area-under-curve quantification of slow depolarizations against
+  a drift-tracking local baseline. Protocol-aware, batch-capable, deterministic
+  and fully logged, with figure-ready Excel exports.
+keywords:
+  - electrophysiology
+  - patch-clamp
+  - current-clamp
+  - action potential
+  - intrinsic properties
+  - reproducibility
+  - Python
+license: MIT
+version: 1.0.0
+date-released: '2026-08-18'   # TODO: set to the actual release date
+# doi: 10.5281/zenodo.XXXXXXX  # TODO: fill in after the first Zenodo release
+
+# TODO: uncomment and complete once the manuscript is published or preprinted.
+# preferred-citation:
+#   type: article
+#   title: >-
+#     Removing operator-dependent variability from patch-clamp analysis with
+#     standardized automated pipelines
+#   authors:
+#     - given-names: Elias
+#       family-names: Kanaïe-Atrian
+#     - given-names: Santiago
+#       family-names: Rivera
+#     - given-names: Eric
+#       family-names: Di Pasquale
+#   journal: TBD
+#   year: 2026
+#   doi: TBD
