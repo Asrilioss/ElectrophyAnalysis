@@ -1,0 +1,14 @@
+# intrinsic_firing.py — example configuration
+#
+#   python intrinsic_firing.py -i ./data/current_steps -o intrinsic -c examples/config_intrinsic.yaml
+#
+# Fallback stimulation window, used only when the DAC epoch table of the ABF is
+# missing or inconsistent. When the epochs are readable the pipeline localises
+# the pulse itself and these values are ignored.
+#
+# 220 ms baseline + a 500 ms pulse is the protocol of the accompanying paper.
+# If your pulse duration differs, change these AND revisit the saturation-sweep
+# and adaptation settings, which were tuned for 500 ms.
+
+stim_start_ms: 220
+stim_end_ms: 1000
